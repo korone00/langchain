@@ -8,22 +8,10 @@ load_dotenv()
 HUGGINGFACEHUB_API_TOKEN = os.environ.get("HUGGINGFACEHUB_API_TOKEN")
 HUGGINGFACEHUB_REPO_ID = os.environ.get("HUGGINGFACEHUB_REPO_ID")
 
-# llm = HuggingFaceHub(
-#     repo_id=HUGGINGFACE_REPO_ID,
-#     task="text-generation",
-#     model_kwargs={
-#         "max_new_tokens": 512,
-#         "top_k": 30,
-#         "temperature": 0.1,
-#         "repetition_penalty": 1.03,
-#     },
-# )
 llm = HuggingFaceEndpoint(
     repo_id=HUGGINGFACEHUB_REPO_ID,
     max_new_tokens=2048,
     temperature=0.1,
-    # callbacks=[StreamingStdOutCallbackHandler()],  # 콜백을 설정합니다.
-    # streaming=True,  # 스트리밍을 사용합니다.
 )
 
 prompt = ChatPromptTemplate.from_messages(
